@@ -27,7 +27,8 @@ export class ContactComponent implements OnInit {
     
   }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    console.log('esto es el inicio');
+    
   }
 
   hasErrors(field: string, typeError: string) {

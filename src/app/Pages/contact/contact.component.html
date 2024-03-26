@@ -1,0 +1,68 @@
+<div class="container">
+    <form [formGroup]="contactForm" class="row g-3 needs-validation" novalidate (submit)="enviar($event)" >
+        <div class="col-md-4 position-relative">
+          <label for="validationTooltip01" class="form-label">Nombre</label>
+          <input 
+          type="text" 
+          class="form-control" 
+          id="validationTooltip01" 
+          formControlName="name"
+          [ngClass]="{'is-invalid' : hasErrors('name', 'required') || hasErrors('name', 'name')}"
+          >
+          @if (hasErrors('name', 'required')){
+            <span class="text-danger" id="name">Completar con el nombre</span>
+          }
+          
+        </div>
+        <div class="col-md-4 position-relative">
+          <label for="validationTooltip02" class="form-label">Apellido</label>
+          <input 
+          type="text" 
+          class="form-control" 
+          id="validationTooltip02" 
+          formControlName="lastName"
+          [ngClass]="{'is-invalid' : hasErrors('lastName', 'required') || hasErrors('lastName', 'lastName')}"
+          >
+          @if (hasErrors('lastName', 'required')){
+            <span class="text-danger" id="lastName">Completar con el apellido</span>
+          }
+          
+          
+        </div>
+        <div class="col-md-4 position-relative">
+          <label for="validationTooltipUsername" class="form-label">E-mail</label>
+          <input 
+            type="email" class="form-control"
+            id="validationTooltipUsername" 
+            aria-describedby="validationTooltipUsernamePrepend" 
+            formControlName="email"
+            [ngClass]="{'is-invalid' : hasErrors('email', 'required') || hasErrors('email', 'email')}"
+            >
+            @if (hasErrors('email', 'required')){
+              <span class="text-danger" id="email">Completar con el E-mail</span>
+            }
+            @if (hasErrors('email', 'email')){
+              <span class="text-danger" id="email">Formato inválido</span>
+            }
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
+            <textarea 
+              class="form-control" 
+              id="exampleFormControlTextarea1" 
+              rows="3" 
+              formControlName="message"
+              [ngClass]="{'is-invalid' : hasErrors('message', 'required') || hasErrors('message', 'message')}"
+              ></textarea>
+              @if (hasErrors('message', 'required')){
+                <span class="text-danger" id="message">Agregar comentario</span>
+              }
+              @if (hasErrors('message', 'minlength')){
+                <span class="text-danger" id="message">Mínimo de 20 caracteres</span>
+              }
+        </div>
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit">Enviar</button>
+        </div>
+      </form>
+</div>
